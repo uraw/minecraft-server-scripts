@@ -1,0 +1,13 @@
+[Unit]
+Description=Server daemon for Minecraft Java Edition
+
+[Service]
+Type=forking
+User=minecraft
+KillMode=none
+Restart=on-failure
+ExecStart=/usr/bin/screen -dmS minecraft-java /bin/bash -c "/opt/minecraft-java/start_server.sh"
+ExecStop=/usr/bin/screen -S minecraft-java -X stuff "stop\r"
+
+[Install]
+WantedBy=multi-user.target
